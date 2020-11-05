@@ -3,9 +3,9 @@
 int main()
 {
 	setlocale(LC_ALL,"Russian");
-	cout << t << endl;
 	string firstNum;
 	string secondNum;
+	string deg;
 	int* first = new int[t];
 	int* second = new int[t];
 	int* sum = new int[t];
@@ -13,6 +13,8 @@ int main()
 	int* inv = new int[t];
 	int* square = new int[t];
 	int* tr = new int[t];
+	int* degree = new int[t];
+	degree = obnul(degree, t);
 	tr = obnul(tr, t);
 	first = obnul(first,t);
 	second = obnul(second, t);
@@ -52,11 +54,6 @@ int main()
 	outArr(q, k);
 	cout << endl;
 
-	inv = inverse(first);
-	cout << "Обратный:   ";
-	outArr(inv, k);
-	cout << endl;
-
 	square = Squa(first);
 	cout << "Квадрат:   ";
 	outArr(square, k);
@@ -65,6 +62,14 @@ int main()
 	tr = trace(first);
 	cout << "След:   ";
 	outArr(tr, k);
+	cout << endl;
+
+	cout << "В какую степень вы хотите вознести первый полином? (в двоичном виде, не более чем 2^{n}-1)" << endl;
+	cin >> deg;
+	degree = strToArr(deg);
+	degree = Degr(first, degree);
+	cout << "Степень:   ";
+	outArr(degree, k);
 	cout << endl;
 
 	delete[] first;
