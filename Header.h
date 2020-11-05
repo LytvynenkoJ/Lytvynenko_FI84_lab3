@@ -190,3 +190,17 @@ int* inverse(int num[])
 	delete[] b;
 	return inv;
 }
+int* Squa(int num[])
+{
+	int* square = new int[t];
+	square = obnul(square, t);
+	for (int i = 0; i < t; i++)
+	{
+		if (i%2==0)
+		{
+			square[i] = num[k+i/2-1];
+		}
+	}
+	square = module(square, mod);
+	return square;
+}
