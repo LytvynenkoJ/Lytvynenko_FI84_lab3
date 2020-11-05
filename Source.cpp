@@ -11,16 +11,20 @@ int main()
 	int* sum = new int[t];
 	int* mul = new int[t];
 	int* inv = new int[t];
+	int* square = new int[t];
+	int* tr = new int[t];
+	tr = obnul(tr, t);
 	first = obnul(first,t);
 	second = obnul(second, t);
 	sum = obnul(sum, t);
 	mul = obnul(mul, t);
 	inv = obnul(inv, t);
+	square = obnul(square, t);
 	mod = obnul(mod, t);
-	cout << "Ââåäèòå ïåðâûé ýëåìåíò:   ";
+	cout << "Введите первый элемент:   ";
 	cin >> firstNum;
 	first = strToArr(firstNum);
-	cout << "Ââåäèòå âòîðîé ýëåìåíò:   ";
+	cout << "Введите второй элемент:   ";
 	cin >> secondNum;
 	second = strToArr(secondNum);
 
@@ -28,19 +32,19 @@ int main()
 	mod[2] = 1;
 	mod[5] = 1;
 	mod[6] = 1;
-	cout << "Ìîäóëü:   ";
+	cout << "Модуль:   ";
 	outArr(mod, k+1);
 	cout << endl;
 
 	// sum
 	sum = Add(first,second);
-	cout << "Ñóììà:   ";
+	cout << "Сумма:   ";
 	outArr(sum,k);
 	cout << endl;
 
 	// multiple
 	mul = mult(first,second);
-	cout << "Ïðîèçâåäåíèå:   ";
+	cout << "Произведение:   ";
 	outArr(mul, k);
 	cout << endl;
 
@@ -49,13 +53,18 @@ int main()
 	cout << endl;
 
 	inv = inverse(first);
-	cout << "Îáðàòíûé:   ";
+	cout << "Обратный:   ";
 	outArr(inv, k);
 	cout << endl;
-	
+
 	square = Squa(first);
 	cout << "Квадрат:   ";
 	outArr(square, k);
+	cout << endl;
+
+	tr = trace(first);
+	cout << "След:   ";
+	outArr(tr, k);
 	cout << endl;
 
 	delete[] first;
@@ -63,5 +72,7 @@ int main()
 	delete[] sum;
 	delete[] mod;
 	delete[] mul;
+	delete[] square;
+	delete[] tr;
 	return 0;
 }
