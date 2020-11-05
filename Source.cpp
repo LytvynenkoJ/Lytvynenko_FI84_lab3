@@ -17,10 +17,10 @@ int main()
 	mul = obnul(mul, t);
 	inv = obnul(inv, t);
 	mod = obnul(mod, t);
-	cout << "Ââåäèòå ïåðâûé ýëåìåíò:   ";
+	cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¯Ã¥Ã°Ã¢Ã»Ã© Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²:   ";
 	cin >> firstNum;
 	first = strToArr(firstNum);
-	cout << "Ââåäèòå âòîðîé ýëåìåíò:   ";
+	cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¢Ã²Ã®Ã°Ã®Ã© Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²:   ";
 	cin >> secondNum;
 	second = strToArr(secondNum);
 
@@ -28,19 +28,19 @@ int main()
 	mod[2] = 1;
 	mod[5] = 1;
 	mod[6] = 1;
-	cout << "Ìîäóëü:   ";
+	cout << "ÃŒÃ®Ã¤Ã³Ã«Ã¼:   ";
 	outArr(mod, k+1);
 	cout << endl;
 
 	// sum
 	sum = Add(first,second);
-	cout << "Ñóììà:   ";
+	cout << "Ã‘Ã³Ã¬Ã¬Ã :   ";
 	outArr(sum,k);
 	cout << endl;
 
 	// multiple
 	mul = mult(first,second);
-	cout << "Ïðîèçâåäåíèå:   ";
+	cout << "ÃÃ°Ã®Ã¨Ã§Ã¢Ã¥Ã¤Ã¥Ã­Ã¨Ã¥:   ";
 	outArr(mul, k);
 	cout << endl;
 
@@ -49,8 +49,13 @@ int main()
 	cout << endl;
 
 	inv = inverse(first);
-	cout << "Îáðàòíûé:   ";
+	cout << "ÃŽÃ¡Ã°Ã Ã²Ã­Ã»Ã©:   ";
 	outArr(inv, k);
+	cout << endl;
+	
+	square = Squa(first);
+	cout << "ÐšÐ²Ð°Ð´Ñ€Ð°Ñ‚:   ";
+	outArr(square, k);
 	cout << endl;
 
 	delete[] first;
