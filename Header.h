@@ -231,13 +231,7 @@ int* Degr(int first[], int second[])
 	for (int i = t- high(second); i < t; i++)
 	{
 		if (second[i] == 1) degree = mult(degree,first);
-		cout << "1:  ";
-		outArr(degree, k);
-		cout << endl;
 		if(i!=t-1) degree = mult(degree, degree);
-		cout << "   2:  ";
-		outArr(degree, k);
-		cout << endl;
 	}
 	return degree;
 }
