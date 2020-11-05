@@ -204,3 +204,22 @@ int* Squa(int num[])
 	square = module(square, mod);
 	return square;
 }
+int* trace(int num[])
+{
+	int* tr = new int[t];
+	tr = obnul(tr,t);
+	int* b = new int[t];
+	b = obnul(b,t);
+	for (int i = 0; i < t; i++)
+	{
+		b[i] = num[i];
+		tr[i] = num[i];
+	}
+	for (int i = 0; i < k-1; i++)
+	{
+		b = Squa(b);
+		tr = Add(b, tr);
+	}
+	delete[] b;
+	return tr;
+}
