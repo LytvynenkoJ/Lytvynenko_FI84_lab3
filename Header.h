@@ -44,7 +44,7 @@ int* strToArr(string num)
 	arr = obnul(arr, t);
 	if (num.size()>k)
 	{
-		cout << "Error 404: Âû ââåëè íåêîððåêòíîå çíà÷åíèå (ñëèøêîì äëèííîå)" << endl;
+		cout << "Error 404: Ã‚Ã» Ã¢Ã¢Ã¥Ã«Ã¨ Ã­Ã¥ÃªÃ®Ã°Ã°Ã¥ÃªÃ²Ã­Ã®Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ (Ã±Ã«Ã¨Ã¸ÃªÃ®Ã¬ Ã¤Ã«Ã¨Ã­Ã­Ã®Ã¥)" << endl;
 		exit(0);
 	}
 	for (int i = 1; i < num.size()+1; i++)
@@ -53,7 +53,7 @@ int* strToArr(string num)
 			arr[t - i] = stringTo2(num[num.size()-i]);
 		else
 		{
-			cout << "Error 404: Âû ââåëè íåêîððåêòíîå çíà÷åíèå (òàêèõ êîýôôèöèåíòîâ íåò â ïîëå õàðàêòåðèñòèêè 2)" << endl;
+			cout << "Error 404: Ã‚Ã» Ã¢Ã¢Ã¥Ã«Ã¨ Ã­Ã¥ÃªÃ®Ã°Ã°Ã¥ÃªÃ²Ã­Ã®Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ (Ã²Ã ÃªÃ¨Ãµ ÃªÃ®Ã½Ã´Ã´Ã¨Ã¶Ã¨Ã¥Ã­Ã²Ã®Ã¢ Ã­Ã¥Ã² Ã¢ Ã¯Ã®Ã«Ã¥ ÃµÃ Ã°Ã ÃªÃ²Ã¥Ã°Ã¨Ã±Ã²Ã¨ÃªÃ¨ 2)" << endl;
 			exit(0);
 		}
 	}
@@ -107,12 +107,6 @@ int* module(int num[],int m[])
 	{
 		q[t - 1] = 1;
 	}
-	/*for (int i = 0; i < t; i++)
-	{
-		arr[i] = m[i];
-	}*/
-	// mod: k+1;   num: 2k-2
-	//cout << high(num) << "   " << high(m) << endl;
 	while (high(num)>=high(m))
 	{
 		arr = obnul(arr, t);
@@ -120,10 +114,6 @@ int* module(int num[],int m[])
 		int b = high(m);
 		int he = a - b;
 		q[t - 1 - he] = 1;
-		cout << q[t - 1 - he] << "   " << t - 1 - he << endl;
-		cout << "          q:   ";
-		outArr(q, t);
-		cout << endl;
 		for (int i = 0; i < t-he; i++)
 		{
 			arr[i] = m[i + he];
@@ -166,65 +156,27 @@ int* inverse(int num[])
 	one = NulEl();
 	int* two = new int[t];
 	two = OneEl();
-	//obnul(q,t);
 	for (int i = 0; i < t; i++)
 	{
 		a[i] = mod[i];
 	}
 	m = module(a, num);
-	/*cout << "a:   ";
-	outArr(a, t);
-	cout << endl;
-	cout << "num:   ";
-	outArr(num, k);
-	cout << endl;*/
 	while (compare(m,OneEl())!=0 && compare(m, OneEl()) != 2)
 	{
-		/*cout << "1:   ";
-		outArr(m, k);
-		cout << endl;*/
 		for (int i = 0; i < t; i++)
 		{
 			b[i] = q[i];
 		}
-		/*cout << "          q:   ";
-		outArr(q, t);
-		cout << endl;*/
 		inv = mult(b, two);
-		/*cout << "          inv = mult(a, two):   ";
-		outArr(inv, t);
-		cout << endl;
-		cout << "          b:   ";
-		outArr(b, t);
-		cout << endl;*/
 		inv = Add(inv,one);                       
-		/*cout << "          inv = Add(inv,one):   ";
-		outArr(inv, t);
-		cout << endl;*/
 		for (int i = 0; i < t; i++)
 		{
 			one[i] = two[i];
 			two[i] = inv[i];
 			a[i] = num[i];
 			num[i] = m[i];
-			//cout << a[i] << " ";
 		}
-		//cout << "      2:   ";
-		//outArr(inv, k);
-		//cout << endl;
-		/*cout << "          a:   ";
-		outArr(a, t);
-		cout << endl;
-		cout << "          m:   ";
-		outArr(m, t);
-		cout << endl;*/
 		m = module(a,num);
-		/*cout << "            3q:   ";
-		outArr(q, t);
-		cout << endl;
-		cout << "            3m:   ";
-		outArr(m, t);
-		cout << endl << endl;*/
 	}
 	for (int i = 0; i < t; i++)
 	{
@@ -236,6 +188,5 @@ int* inverse(int num[])
 	delete[] two;
 	delete[] a;
 	delete[] b;
-	//delete[] m;
 	return inv;
 }
