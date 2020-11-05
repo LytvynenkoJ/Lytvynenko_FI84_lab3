@@ -44,7 +44,7 @@ int* strToArr(string num)
 	arr = obnul(arr, t);
 	if (num.size()>k)
 	{
-		cout << "Error 404: Âû ââåëè íåêîððåêòíîå çíà÷åíèå (ñëèøêîì äëèííîå)" << endl;
+		cout << "Error 404: Вы ввели некорректное значение (слишком длинное)" << endl;
 		exit(0);
 	}
 	for (int i = 1; i < num.size()+1; i++)
@@ -53,7 +53,7 @@ int* strToArr(string num)
 			arr[t - i] = stringTo2(num[num.size()-i]);
 		else
 		{
-			cout << "Error 404: Âû ââåëè íåêîððåêòíîå çíà÷åíèå (òàêèõ êîýôôèöèåíòîâ íåò â ïîëå õàðàêòåðèñòèêè 2)" << endl;
+			cout << "Error 404: Вы ввели некорректное значение (таких коэффициентов нет в поле характеристики 2)" << endl;
 			exit(0);
 		}
 	}
@@ -222,4 +222,22 @@ int* trace(int num[])
 	}
 	delete[] b;
 	return tr;
+}
+int* Degr(int first[], int second[])
+{
+	int* degree = new int[t];
+	degree = obnul(degree, t);
+	degree[t - 1] = 1;
+	for (int i = t- high(second); i < t; i++)
+	{
+		if (second[i] == 1) degree = mult(degree,first);
+		cout << "1:  ";
+		outArr(degree, k);
+		cout << endl;
+		if(i!=t-1) degree = mult(degree, degree);
+		cout << "   2:  ";
+		outArr(degree, k);
+		cout << endl;
+	}
+	return degree;
 }
