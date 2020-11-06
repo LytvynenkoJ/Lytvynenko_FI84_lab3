@@ -71,6 +71,11 @@ int main()
 	cout << "Степень:   ";
 	outArr(degree, k);
 	cout << endl;
+	
+	inv = inverse(first);
+	cout << "Обратный:   ";
+	outArr(inv, k);
+	cout << endl;
 
 	delete[] first;
 	delete[] second;
