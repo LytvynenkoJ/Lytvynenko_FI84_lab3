@@ -142,6 +142,54 @@ int* mult(int first[], int second[])
 	mul = module(mul,mod);
 	return mul;
 }
+int* inverse(int num[])
+{
+	int* inv = new int[t];
+	inv = obnul(inv, t);
+	int* a = new int[t];
+	a = obnul(a, t);
+	int* b = new int[t];
+	b = obnul(b, t);
+	int* m = new int[t];
+	m = obnul(m, t);
+	int* one = new int[t];
+	one = NulEl();
+	int* two = new int[t];
+	two = OneEl();
+	for (int i = 0; i < t; i++)
+	{
+		a[i] = mod[i];
+	}
+	m = module(a, num);
+	while (compare(m,OneEl())!=0 && compare(m, OneEl()) != 2)
+	{
+		for (int i = 0; i < t; i++)
+		{
+			b[i] = q[i];
+		}
+		inv = mult(b, two);
+		inv = Add(inv,one);                       
+		for (int i = 0; i < t; i++)
+		{
+			one[i] = two[i];
+			two[i] = inv[i];
+			a[i] = num[i];
+			num[i] = m[i];
+		}
+		m = module(a,num);
+	}
+	for (int i = 0; i < t; i++)
+	{
+		b[i] = q[i];
+	}
+	inv = mult(b, two);
+	inv = Add(inv, one);
+	delete[] one;
+	delete[] two;
+	delete[] a;
+	delete[] b;
+	return inv;
+}
 int* Squa(int num[])
 {
 	int* square = new int[t];
@@ -183,7 +231,7 @@ int* Degr(int first[], int second[])
 	for (int i = t- high(second); i < t; i++)
 	{
 		if (second[i] == 1) degree = mult(degree,first);
-		if(i!=t-1) degree = mult(degree, degree);
+		if(i!=t-1) degree = Squa(degree);
 	}
 	return degree;
 }
