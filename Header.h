@@ -1,11 +1,18 @@
 #pragma once
 #include <iostream>
+#include <ctime>
+#include <chrono>
+#include <iomanip>
+#include "time.h"
+#include <string>
 #include "locale.h"
 using namespace std;
-int k = 4;
+int k = 239;
 int t = 2*k-1;
 int* mod = new int[t];
 int* q = new int[t];
+auto start = chrono::steady_clock::now();
+auto endtime = chrono::steady_clock::now();
 
 
 int* obnul(int arr[], int c)
@@ -92,10 +99,12 @@ int* Add(int first[], int second[])
 {
 	int* sum = new int[t];
 	obnul(sum,t);
+	start = chrono::steady_clock::now();
 	for (int i = 0; i < t; i++)
 	{
 		sum[i] = (first[i] + second[i])%2;
 	}
+	endtime = chrono::steady_clock::now();
 	return sum;
 }
 int* module(int num[],int m[])
@@ -127,6 +136,7 @@ int* mult(int first[], int second[])
 	int* mul = new int[t];
 	mul = obnul(mul,t);
 	int* arr = new int[t];
+	start = chrono::steady_clock::now();
 	for (int i = t-k; i < t; i++)
 	{
 		if (second[i]==1)
@@ -140,6 +150,7 @@ int* mult(int first[], int second[])
 		}
 	}
 	mul = module(mul,mod);
+	endtime = chrono::steady_clock::now();
 	return mul;
 }
 int* inverse(int num[])
@@ -160,6 +171,7 @@ int* inverse(int num[])
 	{
 		a[i] = mod[i];
 	}
+	start = chrono::steady_clock::now();
 	m = module(a, num);
 	while (compare(m,OneEl())!=0 && compare(m, OneEl()) != 2)
 	{
@@ -184,6 +196,7 @@ int* inverse(int num[])
 	}
 	inv = mult(b, two);
 	inv = Add(inv, one);
+	endtime = chrono::steady_clock::now();
 	delete[] one;
 	delete[] two;
 	delete[] a;
@@ -194,6 +207,7 @@ int* Squa(int num[])
 {
 	int* square = new int[t];
 	square = obnul(square, t);
+	start = chrono::steady_clock::now();
 	for (int i = 0; i < t; i++)
 	{
 		if (i%2==0)
@@ -202,6 +216,7 @@ int* Squa(int num[])
 		}
 	}
 	square = module(square, mod);
+	endtime = chrono::steady_clock::now();
 	return square;
 }
 int* trace(int num[])
@@ -215,11 +230,13 @@ int* trace(int num[])
 		b[i] = num[i];
 		tr[i] = num[i];
 	}
+	start = chrono::steady_clock::now();
 	for (int i = 0; i < k-1; i++)
 	{
 		b = Squa(b);
 		tr = Add(b, tr);
 	}
+	endtime = chrono::steady_clock::now();
 	delete[] b;
 	return tr;
 }
@@ -227,11 +244,13 @@ int* Degr(int first[], int second[])
 {
 	int* degree = new int[t];
 	degree = obnul(degree, t);
-	degree[t - 1] = 1;
+	degree=OneEl();
+	start = chrono::steady_clock::now();
 	for (int i = t- high(second); i < t; i++)
 	{
 		if (second[i] == 1) degree = mult(degree,first);
 		if(i!=t-1) degree = Squa(degree);
 	}
+	endtime = chrono::steady_clock::now();
 	return degree;
 }
