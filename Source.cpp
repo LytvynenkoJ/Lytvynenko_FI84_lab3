@@ -30,7 +30,6 @@ int main()
 	cin >> secondNum;
 	second = strToArr(secondNum);
 
-	//k=4
 	mod[237] = 1;
 	mod[461] = 1;
 	mod[474] = 1;
@@ -38,9 +37,8 @@ int main()
 	mod[476] = 1;
 	cout << "Модуль:   ";
 	outArr(mod, k+1);
-	cout << endl;
+	cout << endl << endl;
 
-	// sum
 	sum = Add(first,second);
 	cout << "Сумма:   ";
 	outArr(sum,k);
@@ -49,7 +47,6 @@ int main()
 		<< chrono::duration_cast<chrono::nanoseconds>(endtime - start).count()
 		<< " ns" << endl << endl;
 
-	// multiple
 	mul = mult(first,second);
 	cout << "Произведение:   ";
 	outArr(mul, k);
@@ -57,6 +54,12 @@ int main()
 	cout << dec << "Время работы произведения в наносекундах : "
 		<< chrono::duration_cast<chrono::nanoseconds>(endtime - start).count()
 		<< " ns" << endl << endl;
+
+	cout << "Введите 3-й элемент:  " << endl;
+	cin >> deg;
+	degree = strToArr(deg);
+	AB(first, second, degree);
+	cout << endl;
 
 	square = Squa(first);
 	cout << "Квадрат:   ";
@@ -80,16 +83,24 @@ int main()
 		<< chrono::duration_cast<chrono::nanoseconds>(endtime - start).count()
 		<< " ns" << endl << endl;
 
+	degree = obnul(degree,t);
 	cout << "В какую степень вы хотите вознести первый полином? (в двоичном виде, не более чем 2^{n}-1)" << endl;
 	cin >> deg;
 	degree = strToArr(deg);
 	degree = Degr(first, degree);
-	cout << "Степень:   ";
+	cout << endl << "Степень:   ";
 	outArr(degree, k);
 	cout << endl;
 	cout << dec << "Время работы степени в наносекундах : "
 		<< chrono::duration_cast<chrono::nanoseconds>(endtime - start).count()
 		<< " ns" << endl << endl;
+
+	cout << "first^{2^{m}-1}  ";
+	deg2m(first);
+	cout << endl;
+	cout << "second^{2^{m}-1}  ";
+	deg2m(second);
+	cout << endl;
 
 	inv = inverse(first);
 	cout << "Обратный:   ";
@@ -98,6 +109,8 @@ int main()
 	cout << dec << "Время работы нахождения обратного в наносекундах : "
 		<< chrono::duration_cast<chrono::nanoseconds>(endtime - start).count()
 		<< " ns" << endl << endl;
+
+	firM(second);
 
 	delete[] first;
 	delete[] second;
