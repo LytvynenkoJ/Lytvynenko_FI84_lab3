@@ -254,3 +254,51 @@ int* Degr(int first[], int second[])
 	endtime = chrono::steady_clock::now();
 	return degree;
 }
+int* AB(int first[], int second[], int third[])
+{
+	int* d = new int[t];
+	d = obnul(d, t);
+	d = Add(mult(first,third),mult(second,third));
+	cout << "A*C+B*C    ";
+	outArr(d,k);
+	cout << endl;
+	d = obnul(d, t);
+	d = mult(Add(first,second),third);
+	cout << "(A+B)*C    ";
+	outArr(d, k);
+	cout << endl;
+	return d;
+}
+int* deg2m(int num[])
+{
+	int* d = new int[t];
+	d = obnul(d,t);
+	for (int i = 0; i < k; i++)
+	{
+		d[t - 1 - i] = 1;
+	}
+	d = Degr(num,d);
+	outArr(d,k);
+	cout << endl;
+	return d;
+}
+int* firM(int num[])
+{
+	int* d = new int[t];
+	d = obnul(d, t);
+	int* n = new int[t];
+	n = obnul(n, t);
+	for (int i = 0; i < t; i++)
+	{
+		n[i] = num[i];
+	}
+	d = inverse(num);
+	cout << "num^{-1}   ";
+	outArr(d,k);
+	cout << endl;
+	d = mult(d,n);
+	cout << "num^{-1}*num   ";
+	outArr(d, k);
+	cout << endl;
+	return d;
+}
